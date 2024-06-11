@@ -1,0 +1,244 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "title": "카페 모카 - 좋은 경험",
+      "author": "사용자1",
+      "password": "password1",
+      "createdDate": "2024-01-01T10:00:00Z",
+      "modifiedDate": "2024-01-02T12:00:00Z",
+      "commentsCount": 5,
+      "likes": 20,
+      "rating": 4.5,
+      "content": "커피 맛이 정말 좋았고, 디저트도 신선했어요. 분위기가 아주 편안해서 시간을 보내기 좋았습니다.",
+      "address": "서울시 강남구",
+      "comments": [
+        {
+          "id": 1,
+          "author": "댓글작성자1",
+          "password": "commentpassword1",
+          "createdDate": "2024-01-01T11:00:00Z",
+          "modifiedDate": "2024-01-02T13:00:00Z",
+          "content": "정말 유익한 리뷰였어요.",
+          "rating": 4.5
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "카페 라떼 - 그저 그렇습니다",
+      "author": "사용자2",
+      "password": "password2",
+      "createdDate": "2024-01-03T10:00:00Z",
+      "modifiedDate": "2024-01-04T12:00:00Z",
+      "commentsCount": 2,
+      "likes": 5,
+      "rating": 3.0,
+      "content": "커피는 괜찮았지만, 디저트가 별로였습니다. 카페 내부가 조금 어수선한 느낌이었어요.",
+      "address": "서울시 마포구",
+      "comments": [
+        {
+          "id": 2,
+          "author": "댓글작성자2",
+          "password": "commentpassword2",
+          "createdDate": "2024-01-03T11:00:00Z",
+          "modifiedDate": "2024-01-04T13:00:00Z",
+          "content": "이 리뷰에 동의해요.",
+          "rating": 3.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "카페 아메리카노 - 매우 만족합니다",
+      "author": "사용자3",
+      "password": "password3",
+      "createdDate": "2024-01-05T10:00:00Z",
+      "modifiedDate": "2024-01-06T12:00:00Z",
+      "commentsCount": 8,
+      "likes": 35,
+      "rating": 5.0,
+      "content": "모든 것이 완벽했어요! 커피와 디저트 모두 훌륭했고, 직원들도 친절했습니다.",
+      "address": "서울시 종로구",
+      "comments": [
+        {
+          "id": 3,
+          "author": "댓글작성자3",
+          "password": "commentpassword3",
+          "createdDate": "2024-01-05T11:00:00Z",
+          "modifiedDate": "2024-01-06T13:00:00Z",
+          "content": "저도 같은 경험을 했어요!",
+          "rating": 5.0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "카페 카푸치노 - 기대 이하",
+      "author": "사용자4",
+      "password": "password4",
+      "createdDate": "2024-01-07T10:00:00Z",
+      "modifiedDate": "2024-01-08T12:00:00Z",
+      "commentsCount": 1,
+      "likes": 2,
+      "rating": 2.0,
+      "content": "많은 기대를 했지만 커피 맛이 실망스러웠습니다. 디저트는 그저 그랬고, 분위기도 별로였어요.",
+      "address": "서울시 서대문구",
+      "comments": [
+        {
+          "id": 4,
+          "author": "댓글작성자4",
+          "password": "commentpassword4",
+          "createdDate": "2024-01-07T11:00:00Z",
+          "modifiedDate": "2024-01-08T13:00:00Z",
+          "content": "이 리뷰에 대해 조금 더 자세히 설명해 주실 수 있나요?",
+          "rating": 2.0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "카페 카라멜 마키아토 - 괜찮았어요",
+      "author": "사용자5",
+      "password": "password5",
+      "createdDate": "2024-01-09T10:00:00Z",
+      "modifiedDate": "2024-01-10T12:00:00Z",
+      "commentsCount": 4,
+      "likes": 15,
+      "rating": 3.5,
+      "content": "전체적으로 괜찮았지만, 커피가 조금 더 뜨거웠으면 좋았을 것 같아요. 디저트는 만족스러웠습니다.",
+      "address": "서울시 강북구",
+      "comments": [
+        {
+          "id": 5,
+          "author": "댓글작성자5",
+          "password": "commentpassword5",
+          "createdDate": "2024-01-09T11:00:00Z",
+          "modifiedDate": "2024-01-10T13:00:00Z",
+          "content": "괜찮았어요. 개선할 점이 보이네요.",
+          "rating": 3.5
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "카페 에스프레소 - 아주 만족스러워요",
+      "author": "사용자6",
+      "password": "password6",
+      "createdDate": "2024-01-11T10:00:00Z",
+      "modifiedDate": "2024-01-12T12:00:00Z",
+      "commentsCount": 7,
+      "likes": 25,
+      "rating": 4.8,
+      "content": "정말 만족스러운 경험이었습니다. 커피와 디저트가 모두 훌륭했고, 카페 분위기도 좋았습니다.",
+      "address": "서울시 동작구",
+      "comments": [
+        {
+          "id": 6,
+          "author": "댓글작성자6",
+          "password": "commentpassword6",
+          "createdDate": "2024-01-11T11:00:00Z",
+          "modifiedDate": "2024-01-12T13:00:00Z",
+          "content": "훌륭한 리뷰입니다!",
+          "rating": 4.8
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "카페 바닐라 라떼 - 그냥 그렇다",
+      "author": "사용자7",
+      "password": "password7",
+      "createdDate": "2024-01-13T10:00:00Z",
+      "modifiedDate": "2024-01-14T12:00:00Z",
+      "commentsCount": 3,
+      "likes": 4,
+      "rating": 2.8,
+      "content": "기대 이하의 서비스였습니다. 커피 맛이 평범하고 디저트도 특별할 것 없었어요.",
+      "address": "서울시 성북구",
+      "comments": [
+        {
+          "id": 7,
+          "author": "댓글작성자7",
+          "password": "commentpassword7",
+          "createdDate": "2024-01-13T11:00:00Z",
+          "modifiedDate": "2024-01-14T13:00:00Z",
+          "content": "저도 그런 경험이 있었어요.",
+          "rating": 2.8
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "카페 초콜릿 모카 - 놀라운 경험",
+      "author": "사용자8",
+      "password": "password8",
+      "createdDate": "2024-01-15T10:00:00Z",
+      "modifiedDate": "2024-01-16T12:00:00Z",
+      "commentsCount": 6,
+      "likes": 30,
+      "rating": 5.0,
+      "content": "매우 인상적인 서비스였어요. 커피와 디저트가 정말 맛있었고, 카페 분위기도 아주 좋았습니다.",
+      "address": "서울시 영등포구",
+      "comments": [
+        {
+          "id": 8,
+          "author": "댓글작성자8",
+          "password": "commentpassword8",
+          "createdDate": "2024-01-15T11:00:00Z",
+          "modifiedDate": "2024-01-16T13:00:00Z",
+          "content": "이 서비스 정말 대단해요!",
+          "rating": 5.0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "카페 헤이즐넛 라떼 - 보통이에요",
+      "author": "사용자9",
+      "password": "password9",
+      "createdDate": "2024-01-17T10:00:00Z",
+      "modifiedDate": "2024-01-18T12:00:00Z",
+      "commentsCount": 0,
+      "likes": 1,
+      "rating": 3.0,
+      "content": "특별한 점은 없었어요. 커피와 디저트가 그냥 그랬습니다.",
+      "address": "서울시 강동구",
+      "comments": [
+        {
+          "id": 9,
+          "author": "댓글작성자9",
+          "password": "commentpassword9",
+          "createdDate": "2024-01-17T11:00:00Z",
+          "modifiedDate": "2024-01-18T13:00:00Z",
+          "content": "별로 특별한 점은 없었어요.",
+          "rating": 3.0
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "카페 아이스 바닐라 라떼 - 최고였어요!",
+      "author": "사용자10",
+      "password": "password10",
+      "createdDate": "2024-01-19T10:00:00Z",
+      "modifiedDate": "2024-01-20T12:00:00Z",
+      "commentsCount": 9,
+      "likes": 40,
+      "rating": 5.0,
+      "content": "정말 최고의 경험이었어요. 커피와 디저트가 모두 완벽했고, 카페 분위기도 매우 좋았습니다.",
+      "address": "서울시 중구",
+      "comments": [
+        {
+          "id": 10,
+          "author": "댓글작성자10",
+          "password": "commentpassword10",
+          "createdDate": "2024-01-19T11:00:00Z",
+          "modifiedDate": "2024-01-20T13:00:00Z",
+          "content": "정말 멋진 리뷰입니다!",
+          "rating": 5.0
+        }
+      ]
+    }
+  ]
+}
