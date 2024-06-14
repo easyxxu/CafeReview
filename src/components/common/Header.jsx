@@ -20,7 +20,7 @@ export default function Header(props) {
         </Link>
       </h1>
       <SearchInput />
-      <Button
+      {/* <Button
         variant="contained"
         color="brown"
         size="large"
@@ -29,7 +29,7 @@ export default function Header(props) {
       >
         <CreateOutlinedIcon sx={{ mr: "10px" }} fontSize="small" />
         리뷰 작성하기
-      </Button>
+      </Button> */}
     </HeaderWrap>
   );
 }
