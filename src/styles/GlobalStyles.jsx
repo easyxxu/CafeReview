@@ -101,7 +101,8 @@ export const GlobalStyle = ({ theme }) => (
 
       h1 {
         font-family: "TTHakgyoansimMoheomgaB";
-        font-size: 48px;
+        font-size: 52px;
+        color: ${theme.palette.common.brown700};
       }
 
       a {

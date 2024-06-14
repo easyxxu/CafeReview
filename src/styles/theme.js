@@ -15,6 +15,9 @@ const main = {
 };
 
 export const theme = createTheme({
+  typography: {
+    fontFamily: "GmarketSansMedium",
+  },
   palette: {
     brown: {
       main: main.brown400,
@@ -31,11 +34,7 @@ export const theme = createTheme({
       lightgrey: "#eeeff1",
       white: "#FFFFFF",
       background: "#d7ccc8",
+      ...main,
     },
   },
 });
-
-// primary: "#af6e4d",
-//     secondary: "#4b2e2b",
-//     bg: "#d3b8ae",
-//     black: "#000",
