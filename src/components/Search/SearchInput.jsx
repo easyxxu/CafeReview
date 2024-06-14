@@ -1,16 +1,25 @@
-import SearchIcon from "@mui/icons-material/Search";
 import { IconButton, InputBase, Paper } from "@mui/material";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SearchInput(props) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     navigate(`/search/${searchInput}`);
   };
+
+  useEffect(() => {
+    if (!path.includes("search")) {
+      setSearchInput("");
+    }
+  }, [path]);
 
   return (
     <Paper
@@ -28,6 +37,7 @@ export default function SearchInput(props) {
         placeholder="리뷰를 검색해보세요"
         inputProps={{ "aria-label": "search reviews" }}
         onChange={(e) => setSearchInput(e.target.value)}
+        value={searchInput}
       />
       <IconButton aria-label="search" type="submit">
         <SearchIcon />
