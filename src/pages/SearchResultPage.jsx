@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { getSearchReviews } from "../apis/apis";
+import { listViewAtom } from "../atoms/review";
 import ReviewItem from "../components/Review/ReviewItem";
 import ReviewList from "../components/Review/ReviewList";
 
@@ -11,6 +13,11 @@ import { ListTitle } from "./HomePage";
 export default function SearchResultPage(props) {
   const { searchKeyword } = useParams();
   const [reviews, setReviews] = useState([]);
+  const setListView = useSetRecoilState(listViewAtom);
+
+  useEffect(() => {
+    setListView("LIST");
+  }, []);
 
   useEffect(() => {
     const loadSearchReview = async () => {

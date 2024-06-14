@@ -1,5 +1,7 @@
 import { List } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { listViewAtom } from "../../atoms/review";
 import ReviewCard from "./ReviewCard";
 import ReviewItem from "./ReviewItem";
 
@@ -10,7 +12,8 @@ const gridStyle = {
   padding: "12px",
 };
 export default function ReviewList(props) {
-  const { reviews, listView } = props;
+  const { reviews } = props;
+  const listView = useRecoilValue(listViewAtom);
   return (
     <>
       <List sx={{ width: "100%", ...(listView === "GRID" && gridStyle) }}>

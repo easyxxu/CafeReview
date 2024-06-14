@@ -19,14 +19,14 @@ import { useRecoilState } from "recoil";
 import { getReviews } from "../apis/apis";
 import ReviewList from "../components/Review/ReviewList";
 import SideMenu from "../components/SideMenu/SideMenu";
-import { filterListAtom } from "../atoms/review";
+import { filterListAtom, listViewAtom } from "../atoms/review";
 
 const options = ["정렬 방식", "최신순", "평점 높은순"];
 
 export default function HomePage(props) {
   const [allReviews, setAllReviews] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [listView, setListView] = useState("LIST");
+  const [listView, setListView] = useRecoilState(listViewAtom);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [filterList, setFilterList] = useRecoilState(filterListAtom);
@@ -170,7 +170,7 @@ export default function HomePage(props) {
             <Box display="flex" justifyContent="center">
               <SideMenu />
             </Box>
-            <ReviewList reviews={reviews} listView={listView} />
+            <ReviewList reviews={reviews} />
           </Box>
         </Box>
       </Box>
