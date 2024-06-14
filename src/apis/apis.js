@@ -6,8 +6,12 @@ export const getReviews = async () => {
 };
 
 export const getReviewById = async (reviewId) => {
-  const res = await axiosInstance.get(`/reviews/${reviewId}`);
-  return res;
+  try {
+    const res = await axiosInstance.get(`/reviews/${reviewId}`);
+    return res;
+  } catch (error) {
+    console.error("리뷰를 가져올 수 없습니다", error);
+  }
 };
 
 export const addReview = async (reviewForm) => {
@@ -20,8 +24,21 @@ export const modifyReview = async (reviewId, modifiedForm) => {
   return res.data;
 };
 
-export const deleteReview = async (password, reviewId) => {
-  const res = await axiosInstance.delete(`/reviews/${reviewId}`);
+export const deleteReview = async (reviewId, password) => {
+  try {
+    const res = await axiosInstance.post(`/reviews/${reviewId}`, {
+      password: password,
+    });
+    return res;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export const likeReview = async (reviewId, updatedLike) => {
+  const res = await axiosInstance.patch(`/reviews/${reviewId}`, {
+    isLiked: updatedLike,
+  });
   return res;
 };
 
@@ -30,55 +47,26 @@ export const getSearchReviews = async (searchKeyword) => {
   return res;
 };
 
-export const getSortedReviews = async (category, method) => {
-  // Category: commentsCount || modifiedDate || likes || rating
-  // Method : asc || desc
-
-  const res = await axiosInstance.get(
-    `/reviews?_sort=${category}&_order=${method}`
-  );
-  return res;
-};
-
-export const getFilterdReviews = async (timePeriod, rating) => {
-  let res;
-  const today = new Date();
-  const params = {};
-
-  if (timePeriod === "1개월") {
-    const period = today.getTime() - 30 * 24 * 60 * 60 * 1000;
-    const periodDate = new Date(period);
-    params.modifiedDate_gte = periodDate.toISOString();
-    params.modifiedDate_lte = today.toISOString();
-  } else if (timePeriod === "3개월") {
-    const period = today.getTime() - 90 * 24 * 60 * 60 * 1000;
-    const periodDate = new Date(period);
-    params.modifiedDate_gte = periodDate.toISOString();
-    params.modifiedDate_lte = today.toISOString();
-  } else if (timePeriod === "6개월 이상") {
-    const period = today.getTime() - 180 * 24 * 60 * 60 * 1000;
-    const periodDate = new Date(period);
-    params.modifiedDate_lte = periodDate.toISOString();
-  }
-
-  if (rating) {
-    params.rating_gte = rating;
-  }
-
-  res = await axiosInstance.get(`/reviews`, { params });
-  return res.data;
-};
-
 // 댓글 API
+export const getComment = async (reviewId) => {
+  try {
+    const res = await axiosInstance.get("/comments");
+    const comment = res.data.filter((item) => item.reviewId === reviewId);
+    return comment;
+  } catch (err) {
+    console.error("댓글을 불러오는 데 실패했습니다: ", err.message);
+  }
+};
+
 export const addComment = async (commentForm) => {
   const res = await axiosInstance.post(`/comments`, commentForm);
   return res;
 };
 
-// const getCommentById = async (commentId) => {
-//   const res = await axiosInstance.get(`/comments/${commentId}`);
-//   return res.data;
-// };
+export const getCommentById = async (commentId) => {
+  const res = await axiosInstance.get(`/comments/${commentId}`);
+  return res;
+};
 
 export const modifyComment = async (commentId, modifiedForm) => {
   const res = await axiosInstance.patch(`/comments/${commentId}`, modifiedForm);
@@ -87,12 +75,12 @@ export const modifyComment = async (commentId, modifiedForm) => {
 
 export const deleteComment = async (commentId, password) => {
   try {
-    const response = await axiosInstance.post(`/comments/${commentId}`, {
+    const res = await axiosInstance.post(`/comments/${commentId}`, {
       password: password,
     });
-
-    console.log(response.data.message); // 서버로부터 받은 메시지 출력
+    return res;
   } catch (error) {
-    console.error(error);
+    console.error("삭제 에러: ", error);
+    return error.response;
   }
 };
