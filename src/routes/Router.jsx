@@ -8,9 +8,9 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/review" element={<ReviewDetailPage />} />
+      <Route path="/review/:reviewId" element={<ReviewDetailPage />} />
       <Route path="/review/write" element={<ReviewWritePage />} />
-      <Route path="/search" element={<SearchResultPage />} />
+      <Route path="/search/:searchKeyword" element={<SearchResultPage />} />
     </Routes>
   );
 }
