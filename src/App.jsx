@@ -1,12 +1,22 @@
-import { useState } from "react";
-import "./App.css";
-import Header from "./components/common/Header";
+import { GlobalStyle } from "./styles/GlobalStyles";
+import "./styles/font.css";
 import Router from "./routes/Router";
+import { theme } from "./styles/theme";
+import { ThemeProvider } from "@mui/material";
+import Layout from "./components/common/Layout";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <>
-      <Router />
+      <ThemeProvider theme={theme}>
+        <RecoilRoot>
+          <GlobalStyle theme={theme} />
+          <Layout>
+            <Router />
+          </Layout>
+        </RecoilRoot>
+      </ThemeProvider>
     </>
   );
 }
