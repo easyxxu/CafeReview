@@ -1,15 +1,8 @@
-import {
-  Button,
-  Container,
-  IconButton,
-  InputBase,
-  Paper,
-  TextField,
-  Box,
-} from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { useState } from "react";
-import styled from "@emotion/styled";
+import { Button, InputBase, Paper, TextField, Box } from "@mui/material";
+
+import { useState, useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+
 import {
   addComment,
   deleteComment,
@@ -17,11 +10,9 @@ import {
   modifyComment,
 } from "../../apis/apis";
 import { commentFormInfoAtom, commentsAtom } from "../../atoms/comment";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { useEffect } from "react";
 
 export const PWREGEX = /^\d{4,8}$/;
-const MESSAGE = {
+export const MESSAGE = {
   PW_VALIDATION: "4~8자리로 구성된 숫자",
   PW_INVALID_ERROR: "잘못된 비밀번호",
   PW_INCORRECT_ERROR: "일치하지 않는 비밀번호",
@@ -35,7 +26,6 @@ export default function CommentForm(props) {
   const [passwordMsg, setPasswordMsg] = useState(MESSAGE.PW_VALIDATION);
   const [commentFormInfo, setCommentFormInfo] =
     useRecoilState(commentFormInfoAtom);
-  const [modifyValue, setModifyValue] = useState("");
   const setComments = useSetRecoilState(commentsAtom);
 
   const handleSubmit = async (e) => {
@@ -57,7 +47,7 @@ export default function CommentForm(props) {
         content: commentInput,
         author: "익명의 작성자",
         createdDate: now,
-        password: parseInt(password),
+        password: password,
         reviewId: parseInt(reviewId),
       };
       const res = await addComment(commentForm);
@@ -91,9 +81,8 @@ export default function CommentForm(props) {
   };
 
   const handleDelete = async () => {
-    setCommentFormInfo((prev) => ({ ...prev, type: "DELETE" }));
     const res = await deleteComment(commentFormInfo.commentId, password);
-
+    console.log("**", res);
     if (res.status === 200) {
       setComments((prev) =>
         prev.filter((comment) => comment.id !== commentFormInfo.commentId)
@@ -102,19 +91,14 @@ export default function CommentForm(props) {
       setPassword("");
       setError(false);
       setCommentInput("");
-      console.log("Deleted Comment");
-    } else if (res.status === 403) {
-      // 비밀번호 일치 X
-      setError(true);
-      setPasswordMsg(MESSAGE.PW_INCORRECT_ERROR);
-      return;
+      setCommentFormInfo((prev) => ({ ...prev, type: "ADD" }));
     } else {
       setError(true);
       setPasswordMsg(res.data.message);
       return;
     }
-    setCommentFormInfo((prev) => ({ ...prev, type: "ADD" }));
   };
+
   const handleCancel = () => {
     setCommentFormInfo((prev) => ({ ...prev, type: "ADD" }));
     setCommentInput("");
@@ -142,7 +126,6 @@ export default function CommentForm(props) {
           pt: "10px",
         }}
       >
-        <p>댓글 작성</p>
         <Paper
           sx={{
             borderRadius: 1,
@@ -171,18 +154,16 @@ export default function CommentForm(props) {
             variant="filled"
             label="비밀번호"
             color="brown"
-            // margin="normal"
             helperText={passwordMsg}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            sx={{ mr: "5px" }}
           />
           {commentFormInfo.type === "MODIFY" && (
             <>
               <Button
                 variant="contained"
                 color="brown"
-                type="submit"
-                // sx={{ flex: "1 0 10px" }}
                 size="large"
                 onClick={handleCancel}
               >
@@ -191,8 +172,6 @@ export default function CommentForm(props) {
               <Button
                 variant="contained"
                 color="brown"
-                type="submit"
-                // sx={{ flex: "1 0 10px" }}
                 size="large"
                 onClick={handleDelete}
               >

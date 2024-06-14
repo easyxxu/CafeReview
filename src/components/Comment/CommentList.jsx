@@ -1,17 +1,17 @@
+import { Box, List } from "@mui/material";
+import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
+
 import styled from "@emotion/styled";
-import { Box, Container, List } from "@mui/material";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+
 import { getComment } from "../../apis/apis";
 import CommentItem from "./CommentItem";
-import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
-import { useRecoilState } from "recoil";
-import { commentFormInfoAtom, commentsAtom } from "../../atoms/comment";
+import { commentsAtom } from "../../atoms/comment";
 
 export default function CommentList(props) {
   const { reviewId } = props;
   const [comments, setComments] = useRecoilState(commentsAtom);
-  const [formType, setFormType] = useRecoilState(commentFormInfoAtom);
 
   useEffect(() => {
     const loadComment = async () => {
