@@ -4,9 +4,9 @@ import Header from "./Header";
 export default function Layout(props) {
   const { children } = props;
   return (
-    <Container>
+    <Container sx={{ mb: "30px" }}>
       <Header />
-      {children}
+      <main>{children}</main>
     </Container>
   );
 }
